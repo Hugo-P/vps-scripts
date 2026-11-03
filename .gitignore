@@ -1,0 +1,16 @@
+# 系統檔
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+
+# 備份
+*.bak
+*.bak.*
+
+# 日誌
+*.log
