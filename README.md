@@ -8,6 +8,7 @@
 |---|---|
 | `install-docker.sh` | 安裝 Docker CE（官方 APT repo） |
 | `install-wg-easy.sh` | 安裝 WireGuard Easy（wg-easy v15） |
+| `install-nginx-proxy-manager.sh` | 安裝 Nginx Proxy Manager |
 
 ## 快速開始
 
@@ -50,12 +51,38 @@ curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-wg-
 curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-wg-easy.sh \
   | sudo bash -s -- --host vpn.example.com --password 'MyStr0ngPass'
 
-# 自訂 port 與資料目錄
+# 自訂端口與資料目錄
 curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-wg-easy.sh \
   | sudo bash -s -- --port 51820 --ui-port 8080 --data-dir /opt/wg-easy
 
 # 已存在容器時重建（資料保留）
 curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-wg-easy.sh \
+  | sudo bash -s -- --force
+```
+
+### 安裝 Nginx Proxy Manager
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-nginx-proxy-manager.sh | sudo bash
+```
+
+默認端口：HTTP `80`、HTTPS `443`、管理介面 `81`。
+
+首次登入：`admin@example.com` / `changeme`（登入後會強制修改）。
+
+常用參數：
+
+```bash
+# 80/443 已被佔用時改用其他端口
+curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-nginx-proxy-manager.sh \
+  | sudo bash -s -- --http-port 8080 --https-port 8443 --admin-port 8181
+
+# 自訂資料目錄
+curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-nginx-proxy-manager.sh \
+  | sudo bash -s -- --data-dir /opt/npm
+
+# 重建（資料保留）
+curl -fsSL https://raw.githubusercontent.com/Hugo-P/vps-scripts/main/install-nginx-proxy-manager.sh \
   | sudo bash -s -- --force
 ```
 
